@@ -19,7 +19,7 @@ function mockElasticlunr(results) {
     search: jest.fn().mockReturnValue(
       results.map(function (r) {
         return { ref: r.ref };
-      })
+      }),
     ),
     documentStore: {
       getDoc: jest.fn().mockImplementation(function (ref) {
@@ -52,13 +52,15 @@ beforeEach(function () {
   delete window.searchIndex;
 
   domContentLoadedHandlers = [];
-  document.addEventListener = jest.fn().mockImplementation(function (type, handler, options) {
-    if (type === "DOMContentLoaded") {
-      domContentLoadedHandlers.push(handler);
-    } else {
-      originalAddEventListener(type, handler, options);
-    }
-  });
+  document.addEventListener = jest
+    .fn()
+    .mockImplementation(function (type, handler, options) {
+      if (type === "DOMContentLoaded") {
+        domContentLoadedHandlers.push(handler);
+      } else {
+        originalAddEventListener(type, handler, options);
+      }
+    });
 });
 
 afterEach(function () {
@@ -108,10 +110,10 @@ describe("debounce", function () {
 // --- escapeHtml ---
 
 describe("escapeHtml", function () {
-  test("escapes < > & \" characters", function () {
+  test('escapes < > & " characters', function () {
     var mod = loadSearch();
     expect(mod.escapeHtml('<script>alert("xss")&</script>')).toBe(
-      "&lt;script&gt;alert(&quot;xss&quot;)&amp;&lt;/script&gt;"
+      "&lt;script&gt;alert(&quot;xss&quot;)&amp;&lt;/script&gt;",
     );
   });
 });
@@ -204,6 +206,22 @@ describe("initSearch", function () {
     var results = document.getElementById("search-results");
     var items = results.querySelectorAll(".search-result-item");
     expect(items.length).toBe(10);
+  });
+
+  test("handles results with missing title and body", function () {
+    mockElasticlunr([
+      {
+        ref: "1",
+        doc: { title: "", body: "" },
+      },
+    ]);
+    loadSearch();
+    fireDOMContentLoaded();
+    typeInSearch("test");
+    jest.advanceTimersByTime(200);
+    var results = document.getElementById("search-results");
+    var items = results.querySelectorAll(".search-result-item");
+    expect(items.length).toBe(1);
   });
 
   test("no results shows empty message", function () {
