@@ -1,0 +1,78 @@
+---
+title: "React Server Components 핵심 정리"
+date: 2026-03-16
+description: "React Server Components의 개념과 사용법, 그리고 기존 SSR과의 차이점을 알아봅니다."
+tags: ["react", "study"]
+category: "react"
+---
+
+import Callout from '../../../components/Callout.astro';
+
+React Server Components(RSC)는 서버에서만 실행되는 새로운 컴포넌트 유형입니다.
+클라이언트로 JavaScript를 전송하지 않아 번들 크기를 줄이고 성능을 개선합니다.
+
+## Server Components vs Client Components
+
+<Callout type="info">
+기본적으로 모든 컴포넌트는 Server Component입니다.
+클라이언트에서 실행이 필요한 경우에만 `'use client'` 지시문을 추가합니다.
+</Callout>
+
+| 특성 | Server Component | Client Component |
+|------|-----------------|-----------------|
+| 실행 환경 | 서버 | 클라이언트 (+ 서버 SSR) |
+| JS 번들 포함 | No | Yes |
+| 상태 (useState) | No | Yes |
+| 이벤트 핸들러 | No | Yes |
+| DB/파일 직접 접근 | Yes | No |
+
+## 기본 사용법
+
+```tsx
+// Server Component (기본)
+async function PostList() {
+  const posts = await db.query('SELECT * FROM posts');
+
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+```tsx
+// Client Component
+'use client';
+
+import { useState } from 'react';
+
+function LikeButton({ postId }: { postId: string }) {
+  const [liked, setLiked] = useState(false);
+
+  return (
+    <button onClick={() => setLiked(!liked)}>
+      {liked ? 'Liked' : 'Like'}
+    </button>
+  );
+}
+```
+
+## SSR과의 차이점
+
+<Callout type="warning">
+Server Components와 SSR(Server-Side Rendering)은 다른 개념입니다.
+SSR은 초기 HTML을 서버에서 렌더링하지만, Client Component의 JavaScript는 여전히 클라이언트로 전송됩니다.
+Server Components는 JavaScript 자체를 클라이언트에 보내지 않습니다.
+</Callout>
+
+## 언제 사용하나요?
+
+- **Server Component**: 데이터 fetching, 정적 UI, 큰 의존성 사용 시
+- **Client Component**: 상호작용, 브라우저 API, 상태 관리 필요 시
+
+<Callout type="success">
+대부분의 컴포넌트는 Server Component로 유지하고, 상호작용이 필요한 최소한의 부분만 Client Component로 분리하는 것이 좋습니다.
+</Callout>
