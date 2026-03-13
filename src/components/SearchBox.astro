@@ -1,0 +1,64 @@
+---
+// Client-side search component
+---
+
+<div class="relative">
+  <div class="relative">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="absolute left-3 top-1/2 -translate-y-1/2 text-(--color-text-secondary) pointer-events-none"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </svg>
+    <input
+      id="search-input"
+      type="search"
+      placeholder="Search posts..."
+      autocomplete="off"
+      class="w-full rounded-lg border border-(--color-border) bg-(--color-bg) py-2.5 pl-10 pr-4 text-sm placeholder:text-(--color-text-secondary) focus:border-(--color-accent) focus:outline-none focus:ring-2 focus:ring-cyan-500/30 motion-safe:transition-all motion-safe:duration-200 min-h-11"
+      aria-label="Search posts"
+    />
+  </div>
+</div>
+
+<script>
+  function initSearch() {
+    const input = document.getElementById(
+      'search-input'
+    ) as HTMLInputElement | null;
+    if (!input) return;
+
+    const postCards = document.querySelectorAll<HTMLElement>('[data-post-card]');
+
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+
+      postCards.forEach((card) => {
+        const title = (card.dataset.title ?? '').toLowerCase();
+        const description = (card.dataset.description ?? '').toLowerCase();
+        const tags = (card.dataset.tags ?? '').toLowerCase();
+
+        const matches =
+          query === '' ||
+          title.includes(query) ||
+          description.includes(query) ||
+          tags.includes(query);
+
+        card.style.display = matches ? '' : 'none';
+      });
+    });
+  }
+
+  initSearch();
+  document.addEventListener('astro:after-swap', initSearch);
+</script>

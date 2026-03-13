@@ -1,0 +1,66 @@
+---
+interface SeriesPost {
+  id: string;
+  title: string;
+  seriesOrder: number;
+}
+
+interface Props {
+  series: string;
+  posts: SeriesPost[];
+  currentId: string;
+  base: string;
+}
+
+const { series, posts, currentId, base } = Astro.props;
+---
+
+<aside
+  class="not-prose rounded-lg border border-(--color-border) bg-(--color-bg-secondary) p-4"
+>
+  <h3 class="flex items-center gap-2 text-sm font-semibold mb-3">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="shrink-0"
+      aria-hidden="true"
+    >
+      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+      ></path>
+    </svg>
+    Series: {series}
+  </h3>
+  <ol class="space-y-1 text-sm">
+    {
+      posts.map((post, idx) => {
+        const isCurrent = post.id === currentId;
+        return (
+          <li class="flex items-baseline gap-2">
+            <span class="shrink-0 text-xs text-(--color-text-secondary) font-mono w-5 text-right">
+              {idx + 1}.
+            </span>
+            {isCurrent ? (
+              <span class="font-medium text-(--color-accent)">
+                {post.title}
+              </span>
+            ) : (
+              <a
+                href={`${base}${post.id}/`}
+                class="text-(--color-text-secondary) hover:text-(--color-accent) motion-safe:transition-colors motion-safe:duration-200 cursor-pointer"
+              >
+                {post.title}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</aside>
