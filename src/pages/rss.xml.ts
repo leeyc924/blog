@@ -1,26 +1,21 @@
-import rss from '@astrojs/rss';
-import type { APIContext } from 'astro';
-import { getCollection } from 'astro:content';
+import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
+import { getPath } from "@/utils/getPath";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { SITE } from "@/config";
 
-export async function GET(context: APIContext) {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime()
-  );
-
-  const siteUrl = context.site?.toString() ?? 'https://leeyc924.github.io';
-  const base = '/leeyc-blog';
-
+export async function GET() {
+  const posts = await getCollection("blog");
+  const sortedPosts = getSortedPosts(posts);
   return rss({
-    title: 'leeyc blog',
-    description: 'A personal blog about programming and technology',
-    site: siteUrl,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.description,
-      link: `${base}/${post.id}/`,
-      categories: post.data.tags,
+    title: SITE.title,
+    description: SITE.desc,
+    site: SITE.website,
+    items: sortedPosts.map(({ data, id, filePath }) => ({
+      link: getPath(id, filePath),
+      title: data.title,
+      description: data.description,
+      pubDate: new Date(data.modDatetime ?? data.pubDatetime),
     })),
-    customData: '<language>ko</language>',
   });
 }

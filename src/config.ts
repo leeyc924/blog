@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://leeyc924.github.io/leeyc-blog/",
+  author: "leeyc",
+  profile: "https://github.com/leeyc924",
+  desc: "개발과 일상을 기록하는 블로그",
+  title: "leeyc blog",
+  ogImage: "astropaper-og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 4,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: true,
+    text: "Edit page",
+    url: "https://github.com/leeyc924/leeyc-blog/edit/main/",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "ko",
+  timezone: "Asia/Seoul",
+} as const;
