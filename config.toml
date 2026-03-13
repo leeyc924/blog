@@ -1,7 +1,7 @@
 base_url = "https://leeyc924.github.io/leeyc-blog"
 title = "leeyc blog"
 description = "개발 기록과 학습 노트"
-default_language = "ko"
+default_language = "en"
 
 compile_sass = true
 build_search_index = true
@@ -9,20 +9,13 @@ generate_feeds = true
 feed_filenames = ["atom.xml"]
 
 taxonomies = [
-    { name = "tags", feed = false, lang = "ko" },
+    { name = "tags", feed = false },
 ]
 
 [search]
 include_title = true
 include_description = true
 include_content = true
-index_format = "elasticlunr_json"
-
-[languages.ko.search]
-include_title = true
-include_description = true
-include_content = true
-index_format = "elasticlunr_json"
 
 [markdown.highlighting]
 style = "class"
