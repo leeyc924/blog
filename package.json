@@ -1,0 +1,30 @@
+{
+  "name": "leeyc-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeyc924/leeyc-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leeyc924/leeyc-blog/issues"
+  },
+  "homepage": "https://github.com/leeyc924/leeyc-blog#readme",
+  "description": "",
+  "devDependencies": {
+    "@jest/globals": "^30.3.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "jsdom": "^28.1.0"
+  }
+}
