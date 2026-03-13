@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="posts">
+    <h1>{{ config.title }}</h1>
+    {% if paginator %}
+        {% for page in paginator.pages %}
+        <article class="post-summary">
+            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
+            {% if page.summary %}
+            <p>{{ page.summary | safe }}</p>
+            {% endif %}
+        </article>
+        {% endfor %}
+    {% endif %}
+</section>
+{% endblock content %}
