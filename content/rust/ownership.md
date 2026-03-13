@@ -2,6 +2,8 @@
 title = "Rust 소유권(Ownership) 완전 정복"
 date = 2026-03-13
 description = "Rust의 핵심 개념인 소유권 시스템을 예제와 함께 깊이 있게 알아봅니다."
+
+[taxonomies]
 tags = ["rust", "study"]
 
 [extra]

@@ -2,6 +2,8 @@
 title = "Rust 라이프타임(Lifetime) 이해하기"
 date = 2026-03-14
 description = "Rust의 라이프타임 개념과 빌림 검사기의 동작 원리를 알아봅니다."
+
+[taxonomies]
 tags = ["rust", "study"]
 
 [extra]
