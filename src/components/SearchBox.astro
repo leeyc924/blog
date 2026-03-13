@@ -32,33 +32,7 @@
 </div>
 
 <script>
-  function initSearch() {
-    const input = document.getElementById(
-      'search-input'
-    ) as HTMLInputElement | null;
-    if (!input) return;
-
-    const postCards = document.querySelectorAll<HTMLElement>('[data-post-card]');
-
-    input.addEventListener('input', () => {
-      const query = input.value.toLowerCase().trim();
-
-      postCards.forEach((card) => {
-        const title = (card.dataset.title ?? '').toLowerCase();
-        const description = (card.dataset.description ?? '').toLowerCase();
-        const tags = (card.dataset.tags ?? '').toLowerCase();
-
-        const matches =
-          query === '' ||
-          title.includes(query) ||
-          description.includes(query) ||
-          tags.includes(query);
-
-        card.style.display = matches ? '' : 'none';
-      });
-    });
-  }
-
+  import { initSearch } from '../scripts/search';
   initSearch();
   document.addEventListener('astro:after-swap', initSearch);
 </script>

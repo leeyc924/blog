@@ -51,16 +51,7 @@
 </button>
 
 <script>
-  function initDarkModeToggle() {
-    const toggle = document.getElementById('dark-mode-toggle');
-    if (!toggle) return;
-
-    toggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-  }
-
+  import { initDarkModeToggle } from '../scripts/dark-mode';
   initDarkModeToggle();
   document.addEventListener('astro:after-swap', initDarkModeToggle);
 </script>
