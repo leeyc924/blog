@@ -233,4 +233,71 @@ describe("initSearch", function () {
     var results = document.getElementById("search-results");
     expect(results.textContent).toContain("검색 결과가 없습니다.");
   });
+
+  test("loads index from searchIndexUrl via fetch when searchIndex is not set", function () {
+    var indexData = { fields: ["title", "body"] };
+    var index = {
+      search: jest.fn().mockReturnValue([]),
+      documentStore: { getDoc: jest.fn() },
+    };
+
+    window.elasticlunr = {
+      Index: { load: jest.fn().mockReturnValue(index) },
+    };
+    delete window.searchIndex;
+    window.searchIndexUrl = "/search_index.ko.json";
+
+    global.fetch = jest.fn().mockResolvedValue({
+      json: jest.fn().mockResolvedValue(indexData),
+    });
+
+    loadSearch();
+    fireDOMContentLoaded();
+
+    return Promise.resolve()
+      .then(function () {
+        return Promise.resolve();
+      })
+      .then(function () {
+        expect(global.fetch).toHaveBeenCalledWith("/search_index.ko.json");
+        expect(window.elasticlunr.Index.load).toHaveBeenCalledWith(indexData);
+        delete global.fetch;
+      });
+  });
+
+  test("handles fetch failure gracefully", function () {
+    window.elasticlunr = {
+      Index: { load: jest.fn() },
+    };
+    delete window.searchIndex;
+    window.searchIndexUrl = "/search_index.ko.json";
+
+    global.fetch = jest.fn().mockRejectedValue(new Error("network error"));
+
+    loadSearch();
+    fireDOMContentLoaded();
+
+    return Promise.resolve()
+      .then(function () {
+        return Promise.resolve();
+      })
+      .then(function () {
+        expect(global.fetch).toHaveBeenCalled();
+        expect(window.elasticlunr.Index.load).not.toHaveBeenCalled();
+        delete global.fetch;
+      });
+  });
+
+  test("does nothing when neither searchIndex nor searchIndexUrl exist", function () {
+    window.elasticlunr = {
+      Index: { load: jest.fn() },
+    };
+    delete window.searchIndex;
+    delete window.searchIndexUrl;
+
+    loadSearch();
+    fireDOMContentLoaded();
+
+    expect(window.elasticlunr.Index.load).not.toHaveBeenCalled();
+  });
 });

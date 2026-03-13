@@ -16,6 +16,13 @@ taxonomies = [
 include_title = true
 include_description = true
 include_content = true
+index_format = "elasticlunr_json"
+
+[languages.ko.search]
+include_title = true
+include_description = true
+include_content = true
+index_format = "elasticlunr_json"
 
 [markdown.highlighting]
 style = "class"

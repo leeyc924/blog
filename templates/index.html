@@ -2,7 +2,7 @@
 
 {% block search_scripts %}
 <script src="{{ get_url(path='elasticlunr.min.js') }}" defer></script>
-<script src="{{ get_url(path='search_index.ko.js') }}" defer></script>
+<script>window.searchIndexUrl = "{{ get_url(path='search_index.ko.json') }}";</script>
 <script src="{{ get_url(path='js/search.js') }}" defer></script>
 {% endblock search_scripts %}
 

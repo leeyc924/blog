@@ -42,12 +42,33 @@
       return;
     }
 
-    if (typeof window.elasticlunr === "undefined" || !window.searchIndex) {
+    if (typeof window.elasticlunr === "undefined") {
       return;
     }
 
-    var index = window.elasticlunr.Index.load(window.searchIndex);
+    // Support both JS global (searchIndex) and JSON fetch (searchIndexUrl)
+    function loadAndBind(indexData) {
+      var index = window.elasticlunr.Index.load(indexData);
+      bindSearch(index, searchInput, searchResults);
+    }
 
+    if (window.searchIndex) {
+      loadAndBind(window.searchIndex);
+      return;
+    }
+
+    if (window.searchIndexUrl) {
+      fetch(window.searchIndexUrl)
+        .then(function (res) {
+          return res.json();
+        })
+        .then(loadAndBind)
+        .catch(function () {});
+      return;
+    }
+  }
+
+  function bindSearch(index, searchInput, searchResults) {
     searchInput.addEventListener(
       "input",
       debounce(function () {
@@ -85,7 +106,7 @@
           .join("");
 
         searchResults.innerHTML = html;
-      }, DEBOUNCE_DELAY)
+      }, DEBOUNCE_DELAY),
     );
   }
 
@@ -93,7 +114,9 @@
 
   // Export for testing (no-op in browser where module is undefined)
   /* istanbul ignore next -- browser environment guard */
-  if (typeof module === "undefined") { return; }
+  if (typeof module === "undefined") {
+    return;
+  }
   module.exports = {
     debounce: debounce,
     escapeHtml: escapeHtml,
