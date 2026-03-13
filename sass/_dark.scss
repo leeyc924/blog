@@ -1,0 +1,95 @@
+// Dark mode toggle icon visibility
+[data-theme="dark"] {
+    .icon-sun {
+        display: block;
+    }
+
+    .icon-moon {
+        display: none;
+    }
+
+    // Sticky header with dark background
+    .site-header {
+        background-color: rgba(25, 25, 25, 0.95);
+    }
+
+    // Selection color
+    ::selection {
+        background-color: var(--accent);
+        color: #ffffff;
+    }
+
+    // Inline code contrast
+    img {
+        opacity: 0.92;
+    }
+}
+
+// Fallback for users without JS — respect OS preference
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]):not([data-theme="dark"]) {
+        --bg-primary: #191919;
+        --bg-secondary: #252525;
+        --bg-code: #2d2d2d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0a0;
+        --text-muted: #666666;
+        --border-color: #333333;
+        --link-color: #6ba3d6;
+        --link-hover: #8bbde8;
+
+        --tag-rust-bg: #2d2040;
+        --tag-rust-color: #c4a5e8;
+        --tag-react-bg: #1e3040;
+        --tag-react-color: #8bbde8;
+        --tag-devops-bg: #3a2020;
+        --tag-devops-color: #f0a0a0;
+        --tag-study-bg: #1e3020;
+        --tag-study-color: #80c090;
+        --tag-default-bg: #2d2d2d;
+        --tag-default-color: #a0a0a0;
+
+        --callout-info-bg: #1e2d3d;
+        --callout-info-border: #6ba3d6;
+        --callout-info-icon: #6ba3d6;
+        --callout-warning-bg: #3d3420;
+        --callout-warning-border: #d69e2e;
+        --callout-warning-icon: #d69e2e;
+        --callout-error-bg: #3d2020;
+        --callout-error-border: #f0a0a0;
+        --callout-error-icon: #f0a0a0;
+        --callout-success-bg: #1e3d20;
+        --callout-success-border: #80c090;
+        --callout-success-icon: #80c090;
+    }
+
+    html:not([data-theme="light"]):not([data-theme="dark"]) {
+        .icon-sun {
+            display: block;
+        }
+
+        .icon-moon {
+            display: none;
+        }
+
+        .site-header {
+            background-color: rgba(25, 25, 25, 0.95);
+        }
+
+        img {
+            opacity: 0.92;
+        }
+    }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,12 +1,13 @@
-// Main stylesheet — will be populated in Task 7-9
-// Placeholder to allow Zola build
+// Main stylesheet — Notion-style blog design
+// Partials are imported in dependency order
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@import "variables";
+@import "base";
+@import "components";
+@import "code";
+@import "dark";
 
+// Utility: screen-reader only
 .visually-hidden {
     position: absolute;
     width: 1px;
