@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://leeyc924.github.io',
-  base: '/leeyc-blog',
+  base: '/leeyc-blog/',
   output: 'static',
   integrations: [mdx(), sitemap()],
   markdown: {
