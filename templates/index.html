@@ -1,18 +1,139 @@
 {% extends "base.html" %}
 
+{% block search_scripts %}
+<script src="{{ get_url(path='elasticlunr.min.js') }}" defer></script>
+<script src="{{ get_url(path='search_index.ko.js') }}" defer></script>
+<script src="{{ get_url(path='js/search.js') }}" defer></script>
+{% endblock search_scripts %}
+
 {% block content %}
-<section class="posts">
-    <h1>{{ config.title }}</h1>
+<section class="home" aria-label="블로그 홈">
+    <div class="home__header">
+        <h1 class="home__title">{{ section.title }}</h1>
+        {% if section.description %}
+        <p class="home__description">{{ section.description }}</p>
+        {% endif %}
+    </div>
+
+    {# Tag filter pills #}
+    {% if config.taxonomies %}
+    {% set tags_config = get_taxonomy(kind="tags") %}
+    {% if tags_config.items %}
+    <nav class="tag-filters" aria-label="태그 필터">
+        <button
+            class="tag-pill tag-pill--active cursor-pointer"
+            data-tag="all"
+            type="button"
+            aria-pressed="true"
+        >
+            전체
+        </button>
+        {% for tag in tags_config.items %}
+        <button
+            class="tag-pill cursor-pointer"
+            data-tag="{{ tag.name }}"
+            type="button"
+            aria-pressed="false"
+        >
+            {{ tag.name }}
+            <span class="tag-pill__count" aria-label="{{ tag.pages | length }}개의 글">{{ tag.pages | length }}</span>
+        </button>
+        {% endfor %}
+    </nav>
+    {% endif %}
+    {% endif %}
+
+    {# Search #}
+    <div class="search" role="search" aria-label="블로그 검색">
+        <label for="search-input" class="visually-hidden">블로그 글 검색</label>
+        <input
+            id="search-input"
+            class="search__input"
+            type="search"
+            placeholder="검색어를 입력하세요..."
+            aria-label="검색어를 입력하세요"
+            autocomplete="off"
+        >
+        <div id="search-results" class="search__results" aria-live="polite"></div>
+    </div>
+
+    {# Post list #}
     {% if paginator %}
+    <div class="post-list" aria-label="블로그 글 목록">
         {% for page in paginator.pages %}
-        <article class="post-summary">
-            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
-            {% if page.summary %}
-            <p>{{ page.summary | safe }}</p>
+        <article
+            class="post-item"
+            data-tags="{% if page.taxonomies.tags %}{{ page.taxonomies.tags | join(sep=',') }}{% endif %}"
+        >
+            <h2 class="post-item__title">
+                <a href="{{ page.permalink }}" class="post-item__link">{{ page.title }}</a>
+            </h2>
+            {% if page.description %}
+            <p class="post-item__description">{{ page.description }}</p>
             {% endif %}
+            <div class="post-item__meta">
+                <time class="post-item__date" datetime="{{ page.date }}">
+                    {{ page.date | date(format="%Y-%m-%d") }}
+                </time>
+                {% if page.reading_time %}
+                <span class="post-item__reading-time" aria-label="읽는 시간 약 {{ page.reading_time }}분">
+                    {{ page.reading_time }}분
+                </span>
+                {% endif %}
+                {% if page.taxonomies.tags %}
+                <ul class="post-item__tags" aria-label="태그">
+                    {% for tag in page.taxonomies.tags %}
+                    <li>
+                        <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="post-item__tag">{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
         </article>
         {% endfor %}
+    </div>
+
+    {# Pagination #}
+    {% if paginator.previous or paginator.next %}
+    <nav class="pagination" aria-label="페이지 내비게이션">
+        {% if paginator.previous %}
+        <a href="{{ paginator.previous }}" class="pagination__link pagination__link--prev cursor-pointer" aria-label="이전 페이지">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+            <span>이전</span>
+        </a>
+        {% else %}
+        <span class="pagination__link pagination__link--disabled" aria-hidden="true">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+            <span>이전</span>
+        </span>
+        {% endif %}
+
+        <span class="pagination__info" aria-current="page">
+            {{ paginator.current_index }} / {{ paginator.number_pagers }}
+        </span>
+
+        {% if paginator.next %}
+        <a href="{{ paginator.next }}" class="pagination__link pagination__link--next cursor-pointer" aria-label="다음 페이지">
+            <span>다음</span>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </a>
+        {% else %}
+        <span class="pagination__link pagination__link--disabled" aria-hidden="true">
+            <span>다음</span>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </span>
+        {% endif %}
+    </nav>
+    {% endif %}
     {% endif %}
 </section>
 {% endblock content %}

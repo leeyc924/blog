@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
+{% block description %}{% if section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}{% endblock description %}
+
+{% block content %}
+<section class="section-page" aria-label="{{ section.title }}">
+    <header class="section-page__header">
+        <h1 class="section-page__title">{{ section.title }}</h1>
+        {% if section.description %}
+        <p class="section-page__description">{{ section.description }}</p>
+        {% endif %}
+    </header>
+
+    {% if section.pages %}
+    <div class="post-list" aria-label="글 목록">
+        {% for page in section.pages %}
+        <article class="post-item">
+            <h2 class="post-item__title">
+                <a href="{{ page.permalink }}" class="post-item__link">{{ page.title }}</a>
+            </h2>
+            {% if page.description %}
+            <p class="post-item__description">{{ page.description }}</p>
+            {% endif %}
+            <div class="post-item__meta">
+                <time class="post-item__date" datetime="{{ page.date }}">
+                    {{ page.date | date(format="%Y-%m-%d") }}
+                </time>
+                {% if page.reading_time %}
+                <span class="post-item__reading-time" aria-label="읽는 시간 약 {{ page.reading_time }}분">
+                    {{ page.reading_time }}분
+                </span>
+                {% endif %}
+                {% if page.taxonomies.tags %}
+                <ul class="post-item__tags" aria-label="태그">
+                    {% for tag in page.taxonomies.tags %}
+                    <li>
+                        <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="post-item__tag">{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="section-page__empty">아직 작성된 글이 없습니다.</p>
+    {% endif %}
+</section>
+{% endblock content %}
