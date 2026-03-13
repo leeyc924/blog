@@ -1,30 +1,21 @@
 {
   "name": "leeyc-blog",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
   },
   "scripts": {
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leeyc924/leeyc-blog.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leeyc924/leeyc-blog/issues"
-  },
-  "homepage": "https://github.com/leeyc924/leeyc-blog#readme",
-  "description": "",
-  "devDependencies": {
-    "@jest/globals": "^30.3.0",
-    "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0",
-    "jsdom": "^28.1.0"
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^6.0.4",
+    "tailwindcss": "^4.2.1"
   }
 }
