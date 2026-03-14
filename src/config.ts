@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://leeyc924.github.io/leeyc-blog/",
+  website: "https://leeyc924.github.io/blog/",
   author: "leeyc",
   profile: "https://github.com/leeyc924",
   desc: "개발과 일상을 기록하는 블로그",
@@ -14,7 +14,7 @@ export const SITE = {
   editPost: {
     enabled: true,
     text: "Edit page",
-    url: "https://github.com/leeyc924/leeyc-blog/edit/main/",
+    url: "https://github.com/leeyc924/blog/edit/main/",
   },
   dynamicOgImage: true,
   dir: "ltr",

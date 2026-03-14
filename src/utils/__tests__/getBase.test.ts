@@ -6,7 +6,7 @@ describe("withBase", () => {
   });
 
   it("should prepend base to absolute path", async () => {
-    vi.stubEnv("BASE_URL", "/leeyc-blog/");
+    vi.stubEnv("BASE_URL", "/blog/");
     const mod = await import("../getBase");
     expect(mod.withBase("/posts")).toContain("/posts");
   });

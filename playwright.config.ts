@@ -13,7 +13,7 @@ export default defineConfig({
   },
   webServer: {
     command: "npm run preview -- --port 4321",
-    url: "http://localhost:4321/leeyc-blog/",
+    url: "http://localhost:4321/blog/",
     reuseExistingServer: !process.env.CI,
     timeout: 30000,
   },
