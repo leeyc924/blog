@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
@@ -7,15 +8,20 @@ import Pagination from "@/components/Pagination.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
-const sortedPosts = getSortedPosts(posts);
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
 ---
 
 <Layout>
   <Header />
   <main id="main-content" class="app-layout py-12">
     <ul class="divide-y divide-border">
-      {sortedPosts.map(data => <Card variant="h3" {...data} />)}
+      {page.data.map(data => <Card variant="h3" {...data} />)}
     </ul>
   </main>
+  <Pagination {page} />
 </Layout>
