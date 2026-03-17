@@ -18,7 +18,7 @@ const { page } = Astro.props;
 
 <Layout>
   <Header />
-  <main id="main-content" class="app-layout py-12">
+  <main id="main-content" class="app-layout pt-4 pb-8">
     <ul class="divide-y divide-border">
       {page.data.map(data => <Card variant="h3" {...data} />)}
     </ul>

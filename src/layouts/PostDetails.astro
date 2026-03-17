@@ -3,8 +3,6 @@ import { render, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Tag from "@/components/Tag.astro";
-import { getCategoryDisplayName, type CategorySlug } from "@/utils/categoryConfig";
-import Category from "@/components/Category.astro";
 import Datetime from "@/components/Datetime.astro";
 import { getPath } from "@/utils/getPath";
 import { withBase } from "@/utils/getBase";
@@ -28,7 +26,6 @@ const {
   modDatetime,
   timezone,
   tags,
-  category,
 } = post.data;
 
 const { Content } = await render(post);
@@ -73,7 +70,7 @@ const nextPost =
   <Header />
   <main id="main-content" class="app-layout py-8" data-pagefind-body>
     <a
-      href={withBase("/posts/")}
+      href={withBase("/")}
       class="mb-6 inline-block text-sm text-accent hover:underline"
     >
       ← Back to blog
@@ -91,11 +88,6 @@ const nextPost =
     </div>
 
     <ul class="mt-3 flex flex-wrap gap-1.5">
-      <Category
-        category={category}
-        categoryName={getCategoryDisplayName(category as CategorySlug)}
-        size="sm"
-      />
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
     </ul>
 

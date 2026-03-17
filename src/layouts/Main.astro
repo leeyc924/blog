@@ -1,6 +1,4 @@
 ---
-import Breadcrumb from "@/components/Breadcrumb.astro";
-
 type StringTitle = { pageTitle: string };
 type ArrayTitle = { pageTitle: [string, string]; titleTransition: string };
 
@@ -9,7 +7,6 @@ type Props = (StringTitle | ArrayTitle) & { pageDesc?: string };
 const { props } = Astro;
 ---
 
-<Breadcrumb />
 <main id="main-content" class="app-layout pb-4">
   {
     "titleTransition" in props ? (

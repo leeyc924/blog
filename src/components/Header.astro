@@ -44,11 +44,11 @@ const isActive = (path: string) => {
     </a>
     <nav
       id="nav-menu"
-      class="flex flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+      class="flex flex-col items-end sm:ms-2 sm:flex-row sm:items-center sm:justify-end sm:space-x-4 sm:py-0"
     >
       <button
         id="menu-btn"
-        class="focus-outline self-end p-2 sm:hidden"
+        class="focus-outline absolute top-4 right-0 p-2 sm:hidden"
         aria-label="Open Menu"
         aria-expanded="false"
         aria-controls="menu-items"
@@ -73,11 +73,6 @@ const isActive = (path: string) => {
         <li class="col-span-2">
           <a href={withBase("/tags")} class:list={{ "active-nav": isActive("/tags") }}>
             Tags
-          </a>
-        </li>
-        <li class="col-span-2">
-          <a href={withBase("/about")} class:list={{ "active-nav": isActive("/about") }}>
-            About
           </a>
         </li>
         <li class="col-span-1 flex items-center justify-center">
