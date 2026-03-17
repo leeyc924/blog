@@ -14,6 +14,7 @@ export function createMockPost(
       description: "Test description",
       author: "leeyc",
       tags: ["test"],
+      category: "etc" as const,
       draft: false,
       ...overrides,
     },
