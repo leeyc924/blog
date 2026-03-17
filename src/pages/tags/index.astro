@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import Main from "@/layouts/Main.astro";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Tag from "@/components/Tag.astro";
@@ -13,9 +12,10 @@ let tags = getUniqueTags(posts);
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header />
-  <Main pageTitle="Tags">
-    <ul class="flex flex-wrap gap-3">
+  <main id="main-content" class="app-layout pt-8 pb-4">
+    <h1 class="text-2xl font-semibold text-foreground sm:text-3xl">Tags</h1>
+    <ul class="mt-6 flex flex-wrap gap-3">
       {tags.map(({ tag, tagName }) => <Tag {tag} {tagName} />)}
     </ul>
-  </Main>
+  </main>
 </Layout>
