@@ -3,6 +3,7 @@ title: "[React] Polymorphic component"
 pubDatetime: 2024-01-28
 description: React에서 Polymorphic 컴포넌트 패턴 구현하기
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## Polymorphic component란?

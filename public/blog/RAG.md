@@ -3,6 +3,7 @@ title: RAG
 pubDatetime: 2026-03-14
 description: 검색 증강 생성(Retrieval-Augmented Generation) 기법 가이드
 tags: ["AI"]
+category: "ai"
 ---
 
 ## 1. RAG란 무엇인가?

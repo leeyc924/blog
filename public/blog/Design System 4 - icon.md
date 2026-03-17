@@ -3,6 +3,7 @@ title: "Design System 4. icon"
 pubDatetime: 2024-02-08
 description: fantasticon을 이용한 아이콘 webfont 패키지 제작
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 오늘은 나만의 icon package를 제작하였습니다.

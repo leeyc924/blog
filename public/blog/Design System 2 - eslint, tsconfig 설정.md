@@ -3,6 +3,7 @@ title: "Design System 2. eslint, tsconfig 설정"
 pubDatetime: 2024-02-01
 description: 모노레포 환경의 eslint와 tsconfig 공통 설정
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## 1) eslint-config

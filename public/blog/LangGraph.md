@@ -3,6 +3,7 @@ title: LangGraph
 pubDatetime: 2026-03-14
 description: 그래프 기반 AI 에이전트 오케스트레이션 프레임워크
 tags: ["AI"]
+category: "ai"
 ---
 
 ## 1. LangGraph란?

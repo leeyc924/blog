@@ -3,6 +3,7 @@ title: clear-install
 pubDatetime: 2024-02-18
 description: Turborepo 프로젝트의 node_modules 제거 및 재설치 스크립트
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 Turborepo 프로젝트에서 모든 `node_modules` 디렉토리를 제거하고 의존성을 재설치하는 bash 스크립트입니다.

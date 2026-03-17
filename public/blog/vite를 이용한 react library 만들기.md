@@ -3,6 +3,7 @@ title: "[React] vite를 이용한 react library 만들기"
 pubDatetime: 2024-12-30
 description: Vite와 Rollup 기반 React 라이브러리 번들링 가이드
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## Bundle?

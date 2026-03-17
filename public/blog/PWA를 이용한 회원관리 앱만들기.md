@@ -3,6 +3,7 @@ title: PWA를 이용한 회원관리 앱만들기
 pubDatetime: 2024-02-13
 description: PWA 기술을 활용한 배드민턴 동호회 회원관리 앱 개발기
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## 프로젝트 배경

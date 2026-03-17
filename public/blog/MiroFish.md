@@ -3,6 +3,7 @@ title: MiroFish
 pubDatetime: 2026-03-16
 description: 다중 에이전트 기반으로 현실 신호를 받아 병렬 디지털 세계를 만들고 미래 시나리오를 예측하는 시뮬레이션 엔진
 tags: ["AI", "Agent", "Simulation", "Forecasting"]
+category: "ai"
 ---
 
 > 단순 예측 모델이 아니라, **여러 에이전트가 상호작용하는 디지털 세계를 먼저 만들고 그 안에서 미래를 시뮬레이션하자**는 발상이 핵심인 프로젝트입니다.

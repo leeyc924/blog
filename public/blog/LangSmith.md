@@ -3,6 +3,7 @@ title: LangSmith
 pubDatetime: 2026-03-14
 description: LangChain 기반 LLM 애플리케이션 모니터링 및 디버깅 플랫폼
 tags: ["AI"]
+category: "ai"
 ---
 
 ## 1. LangSmith란?

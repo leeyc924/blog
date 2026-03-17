@@ -3,6 +3,7 @@ title: "Design System 1. Monorepo 구성"
 pubDatetime: 2024-02-01
 description: turborepo와 pnpm workspace를 이용한 모노레포 구성
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 매번 프로젝트를 할 때마다 컴포넌트를 새로 만들고 utility를 새로 만드는 불편함이 있어 나만의 package를 구성하려고 시작한 프로젝트이다. 최종 결과물로 design system까지 구성하는 것을 목표로 삼았다.

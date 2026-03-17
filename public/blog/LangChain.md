@@ -3,6 +3,7 @@ title: LangChain
 pubDatetime: 2026-03-14
 description: LLM 기반 애플리케이션 개발을 위한 오픈소스 프레임워크
 tags: ["AI"]
+category: "ai"
 ---
 
 > LangChain은 대규모 언어 모델(LLM)을 활용한 애플리케이션 개발을 위한 오픈소스 프레임워크입니다.

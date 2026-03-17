@@ -3,6 +3,7 @@ title: "Design System 6. utils"
 pubDatetime: 2024-02-18
 description: tsup을 이용한 유틸리티 패키지 번들링
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 매번 프로젝트마다 utility 함수를 만들기는 매우 번거로운 일입니다.

@@ -3,6 +3,7 @@ title: "[React] ReactFiber와 렌더링 과정"
 pubDatetime: 2024-12-24
 description: React Fiber 아키텍처와 Virtual DOM 렌더링 과정
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## Virtual DOM

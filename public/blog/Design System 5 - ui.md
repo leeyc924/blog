@@ -3,6 +3,7 @@ title: "Design System 5. ui"
 pubDatetime: 2024-02-13
 description: Vanilla Extract를 활용한 UI 패키지 개발
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## 프로젝트 UI 패키지 개발

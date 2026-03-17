@@ -3,6 +3,7 @@ title: Cognee
 pubDatetime: 2026-03-16
 description: 벡터 검색, 그래프 DB, 지속 학습 메모리를 결합해 AI 에이전트용 컨텍스트를 만드는 오픈소스 지식 엔진
 tags: ["AI", "Agent", "Memory", "RAG"]
+category: "ai"
 ---
 
 > RAG를 조금 고치는 수준이 아니라, **에이전트가 계속 학습하는 메모리와 지식 인프라를 별도 엔진으로 분리하자**는 방향의 프로젝트입니다.

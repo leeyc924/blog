@@ -3,6 +3,7 @@ title: AI Code Review
 pubDatetime: 2024-10-31
 description: GitHub Action과 OpenAI API를 활용한 AI 코드 리뷰 POC
 tags: ["개인", "Frontend"]
+category: "ai"
 ---
 
 Code Review를 AI가 해주면 얼마나 좋을까라는 의문에서 여러 글을 서치하고 한번 POC를 진행해보았습니다

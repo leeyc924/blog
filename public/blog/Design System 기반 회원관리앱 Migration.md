@@ -3,6 +3,7 @@ title: Design System 기반 회원관리앱 Migration
 pubDatetime: 2024-03-13
 description: mui에서 자체 Design System으로의 회원관리앱 마이그레이션
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 본 글은 [PWA를 이용한 회원관리 앱만들기](https://leeyc924.tistory.com/10)와 이어집니다

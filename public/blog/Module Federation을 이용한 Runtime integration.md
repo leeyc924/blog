@@ -3,6 +3,7 @@ title: "[Micro Frontend] Module Federation을 이용한 Runtime integration"
 pubDatetime: 2024-01-29
 description: Webpack 5 Module Federation을 활용한 마이크로 프론트엔드 구현
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## Module Federation 이란?

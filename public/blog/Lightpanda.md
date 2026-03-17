@@ -3,6 +3,7 @@ title: Lightpanda
 pubDatetime: 2026-03-16
 description: AI 에이전트와 자동화를 위해 처음부터 새로 만든 초경량 헤드리스 브라우저
 tags: ["AI", "Agent", "Automation", "Browser"]
+category: "ai"
 ---
 
 > Chromium을 서버에서 무겁게 돌리는 대신, **AI 에이전트용 헤드리스 브라우저를 처음부터 다시 만들자**는 문제의식에서 나온 프로젝트입니다.

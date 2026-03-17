@@ -3,6 +3,7 @@ title: GitNexus
 pubDatetime: 2026-03-16
 description: 코드베이스를 지식 그래프로 인덱싱하고 MCP 도구로 노출해 AI 코딩 에이전트가 구조를 놓치지 않게 만드는 코드 인텔리전스 엔진
 tags: ["AI", "Agent", "Code", "MCP"]
+category: "ai"
 ---
 
 > 단순 코드 검색이 아니라, **코드베이스 전체를 지식 그래프로 바꿔 에이전트에게 구조적 시야를 준다**는 점이 이 프로젝트의 핵심입니다.

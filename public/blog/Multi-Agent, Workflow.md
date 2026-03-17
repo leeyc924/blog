@@ -3,6 +3,7 @@ title: "Multi-Agent & Workflow"
 pubDatetime: 2026-03-14
 description: 멀티 에이전트 시스템과 워크플로우 설계 가이드
 tags: ["AI"]
+category: "ai"
 ---
 
 > **대상 독자:** AI 시스템을 설계하거나 도입하려는 개발자, 아키텍트, 프로덕트 매니저

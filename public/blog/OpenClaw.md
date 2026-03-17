@@ -3,6 +3,7 @@ title: OpenClaw
 pubDatetime: 2026-03-14
 description: 실제로 일을 처리하는 AI 에이전트 플랫폼
 tags: ["AI"]
+category: "ai"
 ---
 
 > **"단순히 대답하는 AI가 아니라, 실제로 일을 처리하는 AI"**

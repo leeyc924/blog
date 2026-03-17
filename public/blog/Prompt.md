@@ -3,6 +3,7 @@ title: Prompt
 pubDatetime: 2026-03-14
 description: 프롬프트 기초 작성법부터 엔지니어링 기법까지
 tags: ["AI"]
+category: "ai"
 ---
 
 ### 기초 작성법부터 엔지니어링 기법까지

@@ -3,6 +3,7 @@ title: LangFlow
 pubDatetime: 2026-03-14
 description: 오픈소스 로우코드 AI 애플리케이션 빌더
 tags: ["AI"]
+category: "ai"
 ---
 
 ## 1. Langflow란?

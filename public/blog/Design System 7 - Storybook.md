@@ -3,6 +3,7 @@ title: "Design System 7. Storybook"
 pubDatetime: 2024-02-23
 description: Vite 기반 Storybook 구성 및 Chromatic 배포
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 Storybook은 React, Angular, Vue 등의 분리된 UI 컴포넌트를 체계적이고 효율적으로 구축할 수 있는 개발 도구입니다.

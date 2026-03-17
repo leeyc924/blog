@@ -3,6 +3,7 @@ title: "[React] UnControlled Component"
 pubDatetime: 2024-12-24
 description: Controlled vs UnControlled Component 비교와 react-hook-form
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 ## input 값 변경 방법

@@ -3,6 +3,7 @@ title: Agent Harness
 pubDatetime: 2026-03-14
 description: AI 에이전트를 테스트, 평가, 실행하기 위한 프레임워크
 tags: ["AI"]
+category: "ai"
 ---
 
 ## 개요

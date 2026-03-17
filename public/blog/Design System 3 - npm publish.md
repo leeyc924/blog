@@ -3,6 +3,7 @@ title: "Design System 3. npm publish"
 pubDatetime: 2024-02-02
 description: npm에 패키지를 배포하는 방법
 tags: ["개인", "Frontend"]
+category: "dev"
 ---
 
 이전 글에서 eslint tsconfig 파일을 구성하였으니 해당 파일을 publish하여 나의 어디 프로젝트는 사용할수 있게 할것이다

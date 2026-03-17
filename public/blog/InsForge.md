@@ -3,6 +3,7 @@ title: InsForge
 pubDatetime: 2026-03-16
 description: AI 코딩 에이전트가 데이터베이스·인증·스토리지·함수·배포를 의미 계층으로 다룰 수 있게 만드는 백엔드 플랫폼
 tags: ["AI", "Agent", "Backend", "MCP"]
+category: "ai"
 ---
 
 > 에이전트가 코드를 쓰는 수준을 넘어, **백엔드 인프라 자체를 의미적으로 이해하고 조작하게 하자**는 방향이 아주 선명한 프로젝트입니다.

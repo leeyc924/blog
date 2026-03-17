@@ -3,6 +3,7 @@ title: LangFuse
 pubDatetime: 2026-03-14
 description: LLM 애플리케이션을 위한 오픈소스 엔지니어링 플랫폼
 tags: ["AI"]
+category: "ai"
 ---
 
 > LLM 애플리케이션을 위한 오픈소스 엔지니어링 플랫폼

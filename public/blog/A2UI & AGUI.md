@@ -3,6 +3,7 @@ title: A2UI & AGUI
 pubDatetime: 2026-03-14
 description: 에이전트 UI 기술 비교 가이드 - A2UI와 AGUI
 tags: ["AI"]
+category: "ai"
 ---
 
 > 2025년 12월 기준 최신 정보를 반영한 에이전트 UI 기술 비교 가이드입니다.
