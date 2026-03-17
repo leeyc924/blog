@@ -29,4 +29,6 @@ public/pagefind
 # test output
 coverage/
 playwright-report/
-test-results/.superpowers/
+test-results/
+
+.superpowers
