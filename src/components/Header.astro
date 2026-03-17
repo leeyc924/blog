@@ -47,7 +47,7 @@ const categories = Object.entries(CATEGORY_MAP) as [CategorySlug, string][];
       <span class="sr-only">Search</span>
     </LinkButton>
   </div>
-  <nav class="flex items-center gap-2 py-3 mt-12 sm:gap-3">
+  <nav class="flex items-center gap-2 py-3 mt-4 sm:gap-3">
     {categories.map(([slug, name]) => (
       <a
         href={withBase(`/posts/category/${slug}/`)}
