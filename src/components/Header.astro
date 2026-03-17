@@ -11,10 +11,8 @@ const currentPath =
   pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
 const isActive = (path: string) => {
-  const segments = currentPath.split("/").filter(Boolean);
-  const targetSegments = path.split("/").filter(Boolean);
-  return segments.length >= targetSegments.length &&
-    targetSegments.every((seg, i) => segments[i] === seg);
+  const fullPath = withBase(path);
+  return currentPath === fullPath || currentPath.startsWith(fullPath + "/") || currentPath.startsWith(fullPath);
 };
 
 const categories = Object.entries(CATEGORY_MAP) as [CategorySlug, string][];
