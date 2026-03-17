@@ -12,7 +12,7 @@ const { category, categoryName, size = "lg" } = Astro.props;
 
 <li class="inline-block">
   <a
-    href={withBase(`/categories/${category}/`)}
+    href={withBase(`/posts/category/${category}/`)}
     transition:name={`category-${category}`}
     class:list={[
       "rounded-full bg-accent-bg text-accent hover:bg-accent hover:text-white transition-colors",
