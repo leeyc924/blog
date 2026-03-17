@@ -1,10 +1,9 @@
 ---
-import IconX from "@/assets/icons/IconX.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
-import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 import { withBase } from "@/utils/getBase";
+import { CATEGORY_MAP, type CategorySlug } from "@/utils/categoryConfig";
 
 const { pathname } = Astro.url;
 
@@ -12,10 +11,13 @@ const currentPath =
   pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
 const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
-  return currentPath === path || currentPathArray[0] === pathArray[0];
+  const segments = currentPath.split("/").filter(Boolean);
+  const targetSegments = path.split("/").filter(Boolean);
+  return segments.length >= targetSegments.length &&
+    targetSegments.every((seg, i) => segments[i] === seg);
 };
+
+const categories = Object.entries(CATEGORY_MAP) as [CategorySlug, string][];
 ---
 
 <a
@@ -27,86 +29,50 @@ const isActive = (path: string) => {
 </a>
 
 <header class="app-layout">
-  <div
-    id="top-nav-wrap"
-    class="flex items-center justify-between border-b border-border-strong py-4 sm:py-6"
-  >
+  <div class="flex items-center justify-between border-b border-border-strong py-4 sm:py-6">
     <a
       href={withBase("/")}
       class="text-xl font-semibold whitespace-nowrap text-foreground sm:text-2xl"
     >
       {SITE.title}
     </a>
-    <nav id="nav-menu" class="flex items-center">
-      <button
-        id="menu-btn"
-        class="focus-outline p-2 sm:hidden"
-        aria-label="Open Menu"
-        aria-expanded="false"
-        aria-controls="menu-items"
-      >
-        <IconX id="close-icon" class="hidden" />
-        <IconMenuDeep id="menu-icon" />
-      </button>
-      <ul
-        id="menu-items"
+    <LinkButton
+      href={withBase("/search")}
+      class:list={[
+        "focus-outline flex p-1",
+        { "[&>svg]:stroke-accent": isActive("/search") },
+      ]}
+      title="Search"
+      aria-label="search"
+    >
+      <IconSearch />
+      <span class="sr-only">Search</span>
+    </LinkButton>
+  </div>
+  <nav class="flex items-center gap-2 border-b border-border py-3 sm:gap-3">
+    {categories.map(([slug, name]) => (
+      <a
+        href={withBase(`/categories/${slug}/`)}
         class:list={[
-          "absolute left-0 right-0 top-full z-10 bg-background px-4 pb-4",
-          "flex-col items-center gap-1",
-          "[&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:font-medium [&>li>a]:hover:text-accent sm:[&>li>a]:px-2 sm:[&>li>a]:py-1",
-          "hidden",
-          "sm:static sm:flex sm:flex-row sm:gap-x-5 sm:bg-transparent sm:px-0 sm:pb-0",
+          "rounded-full px-3 py-1 text-sm font-medium transition-colors",
+          isActive(`/categories/${slug}`)
+            ? "bg-accent text-white"
+            : "bg-accent-bg text-accent hover:bg-accent hover:text-white",
         ]}
       >
-        <li>
-          <a href={withBase("/categories")} class:list={{ "active-nav": isActive("/categories") }}>
-            Categories
-          </a>
-        </li>
-        <li>
-          <a href={withBase("/tags")} class:list={{ "active-nav": isActive("/tags") }}>
-            Tags
-          </a>
-        </li>
-        <li class="flex items-center justify-center">
-          <LinkButton
-            href={withBase("/search")}
-            class:list={[
-              "focus-outline flex p-3 sm:p-1",
-              { "[&>svg]:stroke-accent": isActive("/search") },
-            ]}
-            title="Search"
-            aria-label="search"
-          >
-            <IconSearch />
-            <span class="sr-only">Search</span>
-          </LinkButton>
-        </li>
-      </ul>
-    </nav>
-  </div>
+        {name}
+      </a>
+    ))}
+    <a
+      href={withBase("/tags")}
+      class:list={[
+        "rounded-full px-3 py-1 text-sm font-medium transition-colors",
+        isActive("/tags")
+          ? "bg-accent text-white"
+          : "bg-accent-bg text-accent hover:bg-accent hover:text-white",
+      ]}
+    >
+      Tags
+    </a>
+  </nav>
 </header>
-
-<script>
-  function toggleNav() {
-    const menuBtn = document.querySelector("#menu-btn");
-    const menuItems = document.querySelector("#menu-items");
-    const menuIcon = document.querySelector("#menu-icon");
-    const closeIcon = document.querySelector("#close-icon");
-
-    if (!menuBtn || !menuItems || !menuIcon || !closeIcon) return;
-
-    menuBtn.addEventListener("click", () => {
-      const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
-      menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
-      menuBtn.setAttribute("aria-label", openMenu ? "Open Menu" : "Close Menu");
-      menuItems.classList.toggle("hidden");
-      menuItems.classList.toggle("flex");
-      menuIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
-    });
-  }
-
-  toggleNav();
-  document.addEventListener("astro:after-swap", toggleNav);
-</script>
