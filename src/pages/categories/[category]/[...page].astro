@@ -38,7 +38,6 @@ const { page, categoryName } = Astro.props;
   <Main
     pageTitle={[`Category:`, `${categoryName}`]}
     titleTransition={`category-${category}`}
-    pageDesc={`All the articles with the category "${categoryName}".`}
   >
     <ul class="divide-y divide-border">
       {page.data.map(data => <Card {...data} />)}

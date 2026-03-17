@@ -13,7 +13,7 @@ const categories = getUniqueCategories(posts);
 
 <Layout title={`Categories | ${SITE.title}`}>
   <Header />
-  <Main pageTitle="Categories" pageDesc="All the categories used in posts.">
+  <Main pageTitle="Categories">
     <ul class="flex flex-wrap gap-3">
       {categories.map(({ category, categoryName, count }) => (
         <Category {category} categoryName={`${categoryName} (${count})`} />
