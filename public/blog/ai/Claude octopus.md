@@ -1,3 +1,11 @@
+---
+title: Claude Octopus
+pubDatetime: 2026-03-18
+description: Claude Code에서 Codex, Gemini, Claude를 병렬로 조율하는 멀티 AI 오케스트레이터 사용 가이드
+tags: ["AI", "Agent", "Claude"]
+category: "ai"
+---
+
 # Claude Octopus 사용 가이드
 
 > **Claude Code를 위한 멀티 AI 오케스트레이터**
