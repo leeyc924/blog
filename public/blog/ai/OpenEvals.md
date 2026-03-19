@@ -6,8 +6,6 @@ tags: ["AI", "LLM", "Evaluation", "LangChain"]
 category: "ai"
 ---
 
-## Table of contents
-
 ## OpenEvals란?
 
 [OpenEvals](https://github.com/langchain-ai/openevals)는 LangChain에서 만든 오픈소스 LLM 평가 프레임워크다. LLM 애플리케이션의 출력을 체계적으로 평가하기 위한 도구 모음으로, 29개의 사전 정의된 평가 프롬프트와 다양한 평가 방식을 제공한다.
