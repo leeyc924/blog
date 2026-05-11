@@ -32,3 +32,6 @@ playwright-report/
 test-results/
 
 .superpowers
+# Harness intermediate artifacts
+_workspace/
+_workspace_prev/
